@@ -1,0 +1,8 @@
+@import "tailwindcss";
+
+@theme {
+  /* PubNub के कस्टम कलर्स यहाँ डिफाइन कर रहे हैं */
+  --color-pubnubRed: #CE2029;
+  --color-pubnubDarkBlue: #020b2c;
+  --color-pubnubBlueBtn: #1d4aff;
+}
