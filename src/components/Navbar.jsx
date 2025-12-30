@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom"; // Link import hai
 import { FiSearch, FiMenu, FiX, FiChevronDown } from "react-icons/fi";
 import logoImg from "../assets/pubnub_logo.png";
 
 import ResourcesDropdown from "./ResourcesDropdown";
 import PlatformDropdown from "./PlatformDropdown";
 import SolutionsDropdown from "./SolutionsDropdown"; 
-import DeveloperDropdown from "./DeveloperDropdown"; // Imported
+import DeveloperDropdown from "./DeveloperDropdown"; 
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -14,7 +14,7 @@ const Navbar = () => {
   // State for hover dropdowns
   const [showPlatform, setShowPlatform] = useState(false);
   const [showSolutions, setShowSolutions] = useState(false);
-  const [showDeveloper, setShowDeveloper] = useState(false); // Added State
+  const [showDeveloper, setShowDeveloper] = useState(false); 
   const [showResources, setShowResources] = useState(false);
 
   return (
@@ -56,7 +56,7 @@ const Navbar = () => {
           {/* Simple Link */}
           <Link to="/" className="hover:text-red-600 py-4">Pricing</Link>
 
-          {/* 3. DEVELOPER (HOVER) - UPDATED */}
+          {/* 3. DEVELOPER (HOVER) */}
           <div
             className="relative h-full flex items-center"
             onMouseEnter={() => setShowDeveloper(true)}
@@ -84,10 +84,16 @@ const Navbar = () => {
         {/* ================= DESKTOP RIGHT ================= */}
         <div className="hidden md:flex items-center gap-4">
           <FiSearch className="text-xl cursor-pointer hover:text-red-600" />
-          <button className="bg-red-600 hover:bg-red-700 text-white px-5 py-2.5 rounded font-bold transition-colors">
+          
+          {/* 👇 CHANGE 1: Contact Sales Button -> Link */}
+          <Link 
+            to="/contact-sales" 
+            className="bg-red-600 hover:bg-red-700 text-white px-5 py-2.5 rounded font-bold transition-colors"
+          >
             Contact Sales
-          </button>
-          <button className="font-bold text-gray-700 hover:text-black">Try for free</button>
+          </Link>
+
+          <Link to="/Login" className="font-bold text-gray-700 hover:text-black">Try for free</Link>
         </div>
 
         {/* ================= MOBILE ICONS ================= */}
@@ -103,43 +109,35 @@ const Navbar = () => {
       {mobileOpen && (
         <div className="md:hidden bg-white border-t h-screen overflow-y-auto pb-20">
           
-          {/* Platform Mobile */}
-          <PlatformDropdown 
-            isMobile 
-            onClose={() => setMobileOpen(false)} 
-          />
+          <PlatformDropdown isMobile onClose={() => setMobileOpen(false)} />
+          <SolutionsDropdown isMobile onClose={() => setMobileOpen(false)} />
 
-          {/* Solutions Mobile */}
-          <SolutionsDropdown 
-            isMobile 
-            onClose={() => setMobileOpen(false)} 
-          />
-
-          {/* Pricing Link */}
           <Link className="block px-6 py-4 border-b border-gray-100 font-medium text-gray-800" to="/" onClick={() => setMobileOpen(false)}>
             Pricing
           </Link>
 
-          {/* Developer Mobile - UPDATED */}
-          <DeveloperDropdown 
-            isMobile 
-            onClose={() => setMobileOpen(false)} 
-          />
-
-          {/* Resources Mobile */}
-          <ResourcesDropdown 
-            isMobile 
-            onClose={() => setMobileOpen(false)} 
-          />
+          <DeveloperDropdown isMobile onClose={() => setMobileOpen(false)} />
+          <ResourcesDropdown isMobile onClose={() => setMobileOpen(false)} />
 
           {/* Mobile Actions */}
           <div className="p-6 flex flex-col gap-4 bg-gray-50">
-            <button className="w-full bg-red-600 text-white py-3 rounded font-bold">
+            
+            {/* 👇 CHANGE 2: Mobile Contact Sales Link */}
+            <Link 
+              to="/contact-sales" 
+              onClick={() => setMobileOpen(false)}
+              className="w-full bg-red-600 text-white py-3 rounded font-bold text-center"
+            >
               Contact Sales
-            </button>
-            <button className="w-full border border-gray-300 bg-white py-3 rounded font-bold">
+            </Link>
+
+            <Link 
+              to="/Login"
+              onClick={() => setMobileOpen(false)}
+              className="w-full border border-gray-300 bg-white py-3 rounded font-bold text-center"
+            >
               Try for free
-            </button>
+            </Link>
           </div>
 
         </div>

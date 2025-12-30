@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'; // <--- 1. Link import करें
 
 const TopBar = () => {
   return (
@@ -11,7 +12,7 @@ const TopBar = () => {
           NEW: PUBNUB MCP SERVER
         </span>
         
-        {/* Text (Hidden on very small mobile screens to save space) */}
+        {/* Text */}
         <span className="truncate hidden sm:block text-gray-200">
           Creating Real-Time Apps with AI Agents is now Easier & more Reliable
         </span>
@@ -20,7 +21,11 @@ const TopBar = () => {
       {/* Right Side: Links */}
       <div className="flex items-center gap-6 text-xs font-bold tracking-wide uppercase">
         <a href="#" className="hover:text-gray-300 transition">Support</a>
-        <a href="#" className="hover:text-gray-300 transition">Login</a>
+        
+        {/* 2. Login Link को अपडेट किया */}
+        <Link to="/Login" className="hover:text-gray-300 transition cursor-pointer">
+            Login
+        </Link>
       </div>
 
     </div>

@@ -1,3 +1,5 @@
+import React from 'react';
+import { Link } from 'react-router-dom'; // 1. Link Import karein
 import liveImg from "../assets/hero-live.png";
 import chatImg from "../assets/hero-chat.png";
 import emojiImg from "../assets/hero-emojis.png";
@@ -24,13 +26,21 @@ export default function Hero() {
           </p>
 
           <div className="mt-10 flex gap-4">
-            <button className="bg-[#005BFF] hover:bg-blue-600 transition text-white px-6 py-3 rounded-md font-medium shadow-lg">
+            {/* 2. Start Building Link -> Signup */}
+            <Link 
+              to="/Signup" 
+              className="bg-[#005BFF] hover:bg-blue-600 transition text-white px-6 py-3 rounded-md font-medium shadow-lg inline-block text-center"
+            >
               Start Building
-            </button>
+            </Link>
 
-            <button className="bg-white text-gray-900 px-6 py-3 rounded-md font-medium hover:bg-gray-100">
+            {/* 3. Contact Sales Link -> Contact Sales Page */}
+            <Link 
+              to="/contact-sales" 
+              className="bg-white text-gray-900 px-6 py-3 rounded-md font-medium hover:bg-gray-100 inline-block text-center"
+            >
               Contact sales
-            </button>
+            </Link>
           </div>
         </div>
 
@@ -64,6 +74,5 @@ export default function Hero() {
         </div>
       </div>
     </section>
-    
   );
 }
